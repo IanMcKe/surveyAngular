@@ -1,4 +1,4 @@
-# Survey with AngularJS
+# Surveybot with AngularJS
 
 ##### A website that allows users to take a survey and see a results page. (9/22/15)
 

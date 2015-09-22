@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html ng-app="surveybot">
+  <head>
+    <title>Surveybot</title>
+    <script src="lib/angular.js"></script>
+    <script src="app.js"></script>
+    <script src="controllers/ComputerQuestionController.js"></script>
+    <script src="controllers/PetQuestionController.js"></script>
+    <script src="services/QuestionsFactory.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  </head>
+  <body>
+    <div class="container">
+      <div ng-controller="PetQuestionCtrl">
+        <div class="row">
+          <!-- question1 -->
+          <div class="col-md-4">
+            <h4>{{questions[1].question}}</h4>
+            <form ng-submit="QuestionsFactory.countAnswer(answer)" role="form">
+              <div class="radio">
+                <label>
+                  <input type="radio" ng-model="answer" name="PetAnswer1" id="PetAnswer1" value="cat">
+                  Cat
+                </label>
+              </div>
+              <div class="radio">
+                <label>
+                  <input type="radio" ng-model="answer" name="PetAnswer2" id="PetAnswer2" value="dog">
+                  Dog
+                </label>
+              </div>
+              <button ng-click="question1 = true" type="submit" class="btn btn-default">Submit</button>
+            </form>
+          </div>
+
+          <!-- question2 -->
+          <div class="col-md-4">
+            <h4>{{questions[0].question}}</h4>
+            <form ng-submit="QuestionsFactory.countAnswer(answer)" role="form">
+              <div class="radio">
+                <label>
+                  <input type="radio" ng-model="answer" name="ComputerAnswer1" id="ComputerAnswer1" value="laptop">
+                  Laptop
+                </label>
+              </div>
+              <div class="radio">
+                <label>
+                  <input type="radio" ng-model="answer" name="ComputerAnswer2" id="ComputerAnswer2" value="desktop">
+                  Desktop
+                </label>
+              </div>
+              <button ng-click="question2 = true" type="submit" class="btn btn-default">Submit</button>
+            </form>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-4" ng-show="(questions[1].answerCat + questions[1].answerDog) > 4">
+            <h4>Results:</h4>
+            <h4>Cat: {{questions[1].answerCat}}</h4>
+            <h4>Dog: {{questions[1].answerDog}}</h4>
+            <form action="result.html">
+              <button ng-show="question1 && question2" ng-click="question1 = false; question2 = false" type="submit">Results</button>
+            </form>
+          </div>
+          <div class="col-md-4" ng-show="(questions[0].answerLaptop + questions[0].answerDesktop) > 4">
+            <h4>Results:</h4>
+            <h4>Laptop: {{questions[0].answerLaptop}}</h4>
+            <h4>Desktop: {{questions[0].answerDesktop}}</h4>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
