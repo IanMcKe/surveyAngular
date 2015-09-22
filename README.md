@@ -6,7 +6,7 @@
 
 ## Description
 
-Built using AngularJS.
+Two controllers ```PetQuestionController.js``` and ```ComputerQuestionController.js``` and one factory ```QuestionsFactory.js``` are created for the project.
 
 ## Setup
 
